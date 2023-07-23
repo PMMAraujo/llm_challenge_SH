@@ -21,9 +21,9 @@ import numpy as np
 
 
 def initialize_openai():
-    AZURE_OPENAI_KEY =  st.secrets["AZURE_OPENAI_KEY "]
-    AZURE_OPENAI_ENDPOINT = st.secrets["AZURE_OPENAI_ENDPOINT  "]
-    AZURE_ENGINE_NAME = st.secrets["AZURE_ENGINE_NAME  "]
+    AZURE_OPENAI_KEY =  st.secrets["AZURE_OPENAI_KEY"]
+    AZURE_OPENAI_ENDPOINT = st.secrets["AZURE_OPENAI_ENDPOINT"]
+    AZURE_ENGINE_NAME = st.secrets["AZURE_ENGINE_NAME"]
 
     openai.api_type = "azure"
     openai.api_base = AZURE_OPENAI_ENDPOINT
