@@ -1,0 +1,7 @@
+openai
+langchain==0.0.239
+pandas
+pandasai
+streamlit
+matplotlib
+numpy
