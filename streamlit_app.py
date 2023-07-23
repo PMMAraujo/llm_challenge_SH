@@ -21,9 +21,9 @@ import numpy as np
 
 
 def initialize_openai():
-    AZURE_OPENAI_KEY = "4a25908084e24d5383477db78209dd76"
-    AZURE_OPENAI_ENDPOINT = "https://openai-resource-team-8-france.openai.azure.com/"
-    AZURE_ENGINE_NAME = "gpt35-team-8"
+    #AZURE_OPENAI_KEY = "-"
+    #AZURE_OPENAI_ENDPOINT = "-"
+    #AZURE_ENGINE_NAME = "-"
 
     openai.api_type = "azure"
     openai.api_base = AZURE_OPENAI_ENDPOINT
