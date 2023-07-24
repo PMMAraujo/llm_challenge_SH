@@ -18,13 +18,16 @@ import openai
 import matplotlib.pyplot as plt
 from pandasai import PandasAI
 import numpy as np
+from dotenv import load_dotenv
+import os
 
 
 def initialize_openai():
-    AZURE_OPENAI_KEY =  st.secrets["AZURE_OPENAI_KEY"]
-    AZURE_OPENAI_ENDPOINT = st.secrets["AZURE_OPENAI_ENDPOINT"]
-    AZURE_ENGINE_NAME = st.secrets["AZURE_ENGINE_NAME"]
-
+    load_dotenv()
+    AZURE_OPENAI_KEY = os.getenv("AZURE_OPENAI_KEY")
+    AZURE_OPENAI_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT")
+    AZURE_ENGINE_NAME = os.getenv("AZURE_ENGINE_NAME")
+        
     openai.api_type = "azure"
     openai.api_base = AZURE_OPENAI_ENDPOINT
     openai.api_version = "2023-05-15"
@@ -38,8 +41,6 @@ def initialize_openai():
     )
 
     return llm
-
-pandas_ai = PandasAI(initialize_openai())
 
 def run_langchain(llm, transcript):
     df = pd.DataFrame({'transcription': [transcript]})
@@ -63,6 +64,7 @@ def run_langchain(llm, transcript):
     return answer
 
 def process_csv_data(df, prompt):
+    pandas_ai = PandasAI(initialize_openai())
     tmp_df = pandas_ai(df, prompt=prompt)
 
     return tmp_df
@@ -74,6 +76,8 @@ def plot_graph(df):
     plt.xlabel('Patient ID')
     plt.ylabel('Y')
     return plt
+ 
+
 
 def main():
     st.set_page_config(page_title="Medical Transcript Extraction", page_icon="👨‍⚕️")
@@ -93,8 +97,8 @@ def main():
 
     uploaded_file = st.file_uploader('Upload a CSV file', type=['csv'])
 
-    prompt = st.text_input('What is the information that you want to know from the patients?', 'Which are the 5 heavyest patients?')
-
+    prompt = st.text_input('What is the information that you want to know from the patients data warehouse?\nPlease notice I have no memory of previous queries.', 'Which are the 5 heaviest patients?')
+            
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
 
@@ -103,5 +107,6 @@ def main():
         fig = plot_graph(processed_data)
         st.pyplot(fig)
 
-if __name__ == "__main__":
+
+if __name__ == "__main__":   
     main()

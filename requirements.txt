@@ -5,3 +5,4 @@ pandasai
 streamlit
 matplotlib
 numpy
+python-dotenv
