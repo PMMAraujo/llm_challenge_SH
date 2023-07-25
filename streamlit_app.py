@@ -18,15 +18,15 @@ import openai
 import matplotlib.pyplot as plt
 from pandasai import PandasAI
 import numpy as np
-from dotenv import load_dotenv
-import os
+#from dotenv import load_dotenv
+#import os
 
 
 def initialize_openai():
     load_dotenv()
-    AZURE_OPENAI_KEY = os.getenv("AZURE_OPENAI_KEY")
-    AZURE_OPENAI_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT")
-    AZURE_ENGINE_NAME = os.getenv("AZURE_ENGINE_NAME")
+    AZURE_OPENAI_KEY = st.secrets["AZURE_OPENAI_KEY"]#os.getenv("AZURE_OPENAI_KEY")
+    AZURE_OPENAI_ENDPOINT = st.secrets["AZURE_OPENAI_ENDPOINT"]#os.getenv("AZURE_OPENAI_ENDPOINT")
+    AZURE_ENGINE_NAME = st.secrets["AZURE_ENGINE_NAME"]#os.getenv("AZURE_ENGINE_NAME")
         
     openai.api_type = "azure"
     openai.api_base = AZURE_OPENAI_ENDPOINT
