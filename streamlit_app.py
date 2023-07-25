@@ -23,7 +23,7 @@ import numpy as np
 
 
 def initialize_openai():
-    load_dotenv()
+    #load_dotenv()
     AZURE_OPENAI_KEY = st.secrets["AZURE_OPENAI_KEY"]#os.getenv("AZURE_OPENAI_KEY")
     AZURE_OPENAI_ENDPOINT = st.secrets["AZURE_OPENAI_ENDPOINT"]#os.getenv("AZURE_OPENAI_ENDPOINT")
     AZURE_ENGINE_NAME = st.secrets["AZURE_ENGINE_NAME"]#os.getenv("AZURE_ENGINE_NAME")
